@@ -1,5 +1,14 @@
 public class Bankomat extends javax.swing.JFrame {
 
+    /*
+        0 - podaj karte
+    */
+    int stage = 0;
+    String user;
+    int user_id;
+    int fontsize = 4;
+    
+    
     public Bankomat() {
         initComponents();
     }
@@ -14,7 +23,7 @@ public class Bankomat extends javax.swing.JFrame {
         btnOpt3 = new javax.swing.JButton();
         btnOpt4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Screen = new javax.swing.JTextArea();
         btnOpt5 = new javax.swing.JButton();
         btnOpt6 = new javax.swing.JButton();
         btnOpt7 = new javax.swing.JButton();
@@ -31,12 +40,16 @@ public class Bankomat extends javax.swing.JFrame {
         btnType0 = new javax.swing.JButton();
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Screen.setColumns(20);
+        Screen.setRows(5);
+        jScrollPane1.setViewportView(Screen);
 
         btnType1.setText("1");
         btnType1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,10 +125,34 @@ public class Bankomat extends javax.swing.JFrame {
 
         btnCancel.setText("X");
 
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("-");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(jTextPane1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(13, 13, 13)
+                .addComponent(jButton2)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -139,7 +176,7 @@ public class Bankomat extends javax.swing.JFrame {
                             .addComponent(btnType4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnType1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnType7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -148,8 +185,8 @@ public class Bankomat extends javax.swing.JFrame {
                                 .addComponent(btnType9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnType0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnType5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -200,9 +237,22 @@ public class Bankomat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnType0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton1)
+                        .addContainerGap(8, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(8, 8, 8))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,45 +276,62 @@ public class Bankomat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnType1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType1ActionPerformed
-        // TODO add your handling code here:
+        Type("1");
     }//GEN-LAST:event_btnType1ActionPerformed
 
     private void btnType2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType2ActionPerformed
-        // TODO add your handling code here:
+        Type("2");
     }//GEN-LAST:event_btnType2ActionPerformed
 
     private void btnType3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType3ActionPerformed
-        // TODO add your handling code here:
+        Type("3");
     }//GEN-LAST:event_btnType3ActionPerformed
 
     private void btnType4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType4ActionPerformed
-        // TODO add your handling code here:
+        Type("4");
     }//GEN-LAST:event_btnType4ActionPerformed
 
     private void btnType5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType5ActionPerformed
-        // TODO add your handling code here:
+        Type("5");
     }//GEN-LAST:event_btnType5ActionPerformed
 
     private void btnType6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType6ActionPerformed
-        // TODO add your handling code here:
+        Type("6");
     }//GEN-LAST:event_btnType6ActionPerformed
 
     private void btnType7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType7ActionPerformed
-        // TODO add your handling code here:
+        Type("7");
     }//GEN-LAST:event_btnType7ActionPerformed
 
     private void btnType8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType8ActionPerformed
-        // TODO add your handling code here:
+        Type("8");
     }//GEN-LAST:event_btnType8ActionPerformed
 
     private void btnType9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType9ActionPerformed
-        // TODO add your handling code here:
+        Type("9");
     }//GEN-LAST:event_btnType9ActionPerformed
 
     private void btnType0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnType0ActionPerformed
-        // TODO add your handling code here:
+        Type("0");
     }//GEN-LAST:event_btnType0ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        fontsize++;
+        jTextPane1.setText(fontsize + "");
+        //Screen.setFont()
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        fontsize--;
+        jTextPane1.setText(fontsize + "");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void Type(String a){
+        if (stage == 0){
+            
+        }
+    }
+    
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -297,6 +364,7 @@ public class Bankomat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Screen;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnOpt1;
@@ -317,8 +385,11 @@ public class Bankomat extends javax.swing.JFrame {
     private javax.swing.JButton btnType7;
     private javax.swing.JButton btnType8;
     private javax.swing.JButton btnType9;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
